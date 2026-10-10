@@ -3,144 +3,460 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rômulo Pereira – Software Architect</title>
+    <title>Rômulo Pereira – Senior Software Engineer &amp; Software Architect</title>
+    <meta name="description" content="Rômulo Pereira – Senior Software Engineer and Software Architect in Enschede, Netherlands. Java, Spring Boot, Angular, distributed systems, fintech and SaaS." />
+    <meta property="og:title" content="Rômulo Pereira – Senior Software Engineer &amp; Software Architect" />
+    <meta property="og:description" content="15+ years building distributed systems in Java, Spring Boot and Angular. Fintech and SaaS. Based in Enschede, Netherlands." />
+    <meta property="og:type" content="profile" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet" />
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background: #fafafa; }
-        header { background: #005f8c; color: white; padding: 2em; text-align: center; }
-        section { padding: 2em; max-width: 900px; margin: auto; background: white; margin-top: 1em; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-        h2 { color: #005f8c; border-bottom: 2px solid #eee; padding-bottom: .3em; }
-        ul { padding-left: 1.2em; }
-        .skills span { display: inline-block; background: #e0f2ff; margin: 4px; padding: 6px 12px; border-radius: 20px; font-size: 0.9em; }
-        footer { text-align: center; padding: 2em; font-size: 0.9em; color: #777; }
+        :root {
+            --bg: #f6f7f9;
+            --surface: #ffffff;
+            --text: #1f2933;
+            --muted: #5b6673;
+            --faint: #8a94a1;
+            --border: #e3e7ec;
+            --accent: #1d4e89;
+            --accent-soft: #e8eef7;
+            --chip: #f0f3f7;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f1418;
+                --surface: #161c22;
+                --text: #e6eaee;
+                --muted: #a3adb8;
+                --faint: #7b8794;
+                --border: #26303a;
+                --accent: #7fb0ea;
+                --accent-soft: #1b2a3b;
+                --chip: #1e262e;
+            }
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 48px 24px 32px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        /* Sidebar */
+        aside {
+            position: sticky;
+            top: 32px;
+        }
+        .name {
+            font-family: "Source Serif 4", Georgia, serif;
+            font-size: 2.1rem;
+            line-height: 1.15;
+            margin: 0 0 10px;
+            letter-spacing: -0.01em;
+        }
+        .role {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 0 0 6px;
+        }
+        .tagline {
+            color: var(--muted);
+            font-size: 0.92rem;
+            margin: 0 0 24px;
+        }
+        .contact { list-style: none; padding: 0; margin: 0 0 28px; font-size: 0.92rem; }
+        .contact li { display: flex; align-items: center; gap: 10px; padding: 4px 0; color: var(--muted); }
+        .contact svg { width: 16px; height: 16px; flex: none; stroke: var(--faint); }
+        .status {
+            background: var(--accent-soft);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 0.86rem;
+            color: var(--text);
+            margin-bottom: 28px;
+        }
+        .status strong { display: block; color: var(--accent); margin-bottom: 2px; }
+        .side-block { margin-bottom: 26px; }
+        .side-block h3 {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--faint);
+            margin: 0 0 10px;
+            font-weight: 600;
+        }
+        .side-block p, .side-block li { font-size: 0.9rem; margin: 0; }
+        .side-block ul { list-style: none; padding: 0; margin: 0; }
+        .side-block li + li { margin-top: 8px; }
+        .side-block .sub { color: var(--muted); display: block; font-size: 0.84rem; }
+
+        /* Main */
+        main section { margin-bottom: 48px; }
+        main h2 {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--faint);
+            font-weight: 600;
+            margin: 0 0 18px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        .about p { margin: 0 0 14px; }
+        .about p:first-child { font-size: 1.12rem; color: var(--text); }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 22px;
+        }
+        .highlight {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+        .highlight .figure { font-size: 1.3rem; font-weight: 700; color: var(--accent); line-height: 1.2; }
+        .highlight .label { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+
+        .company {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px 24px;
+            margin-bottom: 16px;
+        }
+        .company-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+        .company-head h3 { margin: 0; font-size: 1.08rem; }
+        .company-head .meta { color: var(--faint); font-size: 0.85rem; }
+        .position { margin-top: 14px; padding-left: 16px; border-left: 2px solid var(--border); }
+        .company-head + .position { border-left-color: var(--accent); }
+        .position-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .position-head h4 { margin: 0; font-size: 0.98rem; font-weight: 600; }
+        .position-head .dates { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
+        .position ul { margin: 8px 0 0; padding-left: 18px; }
+        .position li { margin-bottom: 4px; color: var(--text); }
+        .position p { margin: 6px 0 0; }
+
+        .earlier { list-style: none; padding: 0; margin: 0; }
+        .earlier li {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4px 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.93rem;
+        }
+        .earlier li:last-child { border-bottom: none; }
+        .earlier .what { color: var(--muted); grid-column: 1 / -1; }
+        .earlier .dates { color: var(--faint); font-size: 0.85rem; white-space: nowrap; }
+
+        .skill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 28px; }
+        .skill-grid h3 { font-size: 0.88rem; margin: 0 0 8px; font-weight: 600; }
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .chips span {
+            background: var(--chip);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 3px 10px;
+            font-size: 0.84rem;
+        }
+
+        footer {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--faint);
+        }
+
+        @media (max-width: 860px) {
+            .page { grid-template-columns: 1fr; gap: 32px; padding-top: 32px; }
+            aside { position: static; }
+            .highlights { grid-template-columns: 1fr; }
+            .skill-grid { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            :root { --bg: #fff; --surface: #fff; }
+            body { font-size: 11pt; }
+            .page { grid-template-columns: 220px 1fr; gap: 28px; padding: 0; }
+            aside { position: static; }
+            .company, .highlight { border-color: #ddd; break-inside: avoid; }
+            main section { margin-bottom: 24px; }
+            footer { display: none; }
+            a { color: inherit; }
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Rômulo Pereira</h1>
-    <p>Software Architect | Java | Angular | Node.js | AWS | Clean Architecture</p>
-    <p><a href="mailto:romulo.stads@hotmail.com" style="color:white;">romulo.stads@hotmail.com</a> | Enschede, Netherlands</p>
-</header>
+<div class="page">
 
-<section>
-    <h2>About Me</h2>
-    <p>Experienced software architect with over a decade of hands-on development across sectors such as financial services, public administration, and SaaS. Proven expertise in scalable architecture, mentoring developers, and delivering robust full-stack solutions using Java, Spring Boot, Angular, and cloud-native tools.</p>
-</section>
+    <aside>
+        <h1 class="name">Rômulo Pereira</h1>
+        <p class="role">Senior Software Engineer &amp; Software Architect</p>
+        <p class="tagline">Java · Spring Boot · Angular · Distributed Systems<br />Fintech &amp; SaaS</p>
 
-<section>
-    <h2>Experience</h2>
-    <ul>
-        <li>
-            <strong>Software Architect – BauWatch Group</strong> (Jan 2025 – Present)<br />
-            Leading the architectural direction of client-facing platforms in the security and surveillance domain. Designed scalable backend systems for real-time IoT integrations and improved customer interaction workflows. Collaborating with product and UX teams to ensure performance and usability.
-        </li>
-        <li>
-            <strong>Senior Software Engineer – BauWatch Group</strong> (May 2024 – Dec 2024)<br />
-            Developed features and core services for BauWatch’s digital monitoring platforms. Contributed to CI/CD pipelines and performance optimizations. Stack: Java, PostgreSQL.
-        </li>
-        <li>
-            <strong>Software Engineer Specialist – Serasa</strong> (Oct 2021 – Apr 2024)<br />
-            Led the design and implementation of billing and real-time data systems for the financial sector. Acted as technical lead for scalability and reliability initiatives. Mentored junior developers and collaborated with product teams to deliver measurable outcomes.
-        </li>
-        <li>
-            <strong>Senior Software Engineer – Serasa</strong> (Apr 2021 – Sep 2021)<br />
-            Contributed to mission-critical components for large-scale data handling systems. Focused on backend development, resilience, and monitoring capabilities.
-        </li>
-        <li>
-            <strong>Instructor – Faculdade Senac Criciúma</strong> (Aug 2021 – Dec 2022)<br />
-            Taught Web Development and Software Architecture courses. Created hands-on curriculum in Java and Angular, and guided students through real-world application design practices.
-        </li>
-        <li>
-            <strong>Software Architect – Betha Sistemas</strong> (Dec 2019 – Mar 2021)<br />
-            Led architectural design for municipal public administration systems. Advocated for clean architecture and multi-tenant cloud strategies while mentoring technical teams.
-        </li>
-        <li>
-            <strong>Full Stack Developer – Betha Sistemas</strong> (May 2018 – Dec 2019)<br />
-            Developed frontend and backend modules for SaaS government platforms using Java, Angular, and PostgreSQL. Introduced improvements in deployment workflows and UI responsiveness.
-        </li>
-        <li>
-            <strong>Software Test Engineer – Betha Sistemas</strong> (Sep 2016 – May 2018)<br />
-            Built and maintained automated test pipelines for municipal platforms. Improved test coverage and reduced regression rates across multiple modules.
-        </li>
-        <li>
-            <strong>Software Architect – Cognitic.ie (Ireland)</strong> (Jan 2018 – Jan 2020)<br />
-            Designed and delivered tailored software solutions for private clients. Defined technical stacks and development flows in Node.js, TypeScript, and MongoDB.
-        </li>
-        <li>
-            <strong>Co-founder & Backend Developer – Lamp Soluções</strong> (Aug 2014 – Sep 2016)<br />
-            Founded and led backend development for a startup delivering logistics, retail, and service software. Managed client requirements, architecture, and implementation using PHP and AngularJS.
-        </li>
-        <li>
-            <strong>IT Analyst – Pultrusão do Brasil</strong> (Sep 2013 – Sep 2015)<br />
-            Built a custom ERP solution for production planning and inventory. Designed systems to accommodate evolving industrial requirements and maintained them in production.
-        </li>
-        <li>
-            <strong>Junior PHP Developer – AirTI Tecnologia</strong> (2009 – 2010)<br />
-            Developed small-scale web applications in PHP/MySQL. Gained foundational experience in backend logic, code versioning, and team collaboration.
-        </li>
-        <li>
-            <strong>IT Intern – Prefeitura Municipal de Torres</strong> (2007 – 2009)<br />
-            Supported legacy system maintenance and internal IT operations for local government administration. Developed and updated small tools in PHP and MySQL.
-        </li>
-    </ul>
-</section>
+        <ul class="contact">
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Enschede, Netherlands
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+                <a href="mailto:romulo.stads@hotmail.com">romulo.stads@hotmail.com</a>
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <a href="https://www.linkedin.com/in/romulopereira" target="_blank" rel="noopener">linkedin.com/in/romulopereira</a>
+            </li>
+        </ul>
 
+        <div class="status">
+            <strong>Work authorisation</strong>
+            Highly skilled migrant permit, transferable to any IND-recognised sponsor. No relocation needed.
+        </div>
 
-<section>
-    <h2>Education</h2>
-    <ul>
-        <li><strong>Centro Universitário Barriga Verde – Unibave</strong><br>Postgraduate Degree in Software Technology (2017 – 2019)</li>
-        <li><strong>ULBRA</strong><br>Degree in Systems Analysis and Development (2007 – 2014)</li>
-    </ul>
-</section>
+        <div class="side-block">
+            <h3>Education</h3>
+            <ul>
+                <li>Postgraduate Degree in Software Technology<span class="sub">Unibave · 2017 – 2019</span></li>
+                <li>Degree in Systems Analysis and Development<span class="sub">ULBRA · 2007 – 2014</span></li>
+            </ul>
+        </div>
 
-<section>
-    <h2>Certifications</h2>
-    <ul>
-        <li>AWS Solutions Training for Partners: Foundations – Technical</li>
-        <li>Scrum Foundation</li>
-        <li>Architecting on AWS</li>
-        <li>Developing on AWS</li>
-    </ul>
-</section>
+        <div class="side-block">
+            <h3>Languages</h3>
+            <ul>
+                <li>Portuguese<span class="sub">Native</span></li>
+                <li>English<span class="sub">Full professional proficiency</span></li>
+            </ul>
+        </div>
+    </aside>
 
-<section>
-    <h2>Languages</h2>
-    <ul>
-        <li>Portuguese – Native</li>
-        <li>English – Full Professional Proficiency</li>
-    </ul>
-</section>
+    <main>
 
-<section>
-    <h2>Key Skills</h2>
-    <div class="skills">
-        <span>Java</span>
-        <span>Spring Boot</span>
-        <span>Angular</span>
-        <span>Node.js</span>
-        <span>PostgreSQL</span>
-        <span>MongoDB</span>
-        <span>Oracle</span>
-        <span>Docker</span>
-        <span>Kubernetes</span>
-        <span>AWS</span>
-        <span>CI/CD</span>
-        <span>Clean Architecture</span>
-        <span>DDD</span>
-        <span>RESTful APIs</span>
-        <span>Agile</span>
-        <span>TDD</span>
-        <span>BDD</span>
-        <span>Git</span>
-        <span>TypeORM</span>
-        <span>NestJS</span>
-        <span>Next.js</span>
-    </div>
-</section>
+        <section class="about">
+            <h2>About</h2>
+            <p>I'm a full-stack engineer and software architect with 15+ years of experience, mostly in Java, Spring Boot and Angular. I build distributed systems that run in production, and I stay hands-on in the code.</p>
+            <p>At Serasa (Experian Brazil), a financial platform with 200M+ users, I introduced an event-driven integration architecture on Amazon SQS that cut database costs from $25k to $5k per month. At Betha Sistemas, I led the development of a multi-tenant SaaS used by hundreds of Brazilian municipalities. Today at BauWatch, I own the backend architecture of the client platform in the security domain, and I designed the licensing and access-control (ABAC) model that lets the company sell features per customer.</p>
+            <p>I've also taught Web Development and Software Architecture at the university level, and I like mentoring engineers. I'm looking for senior, staff or software architect roles in hands-on, English-speaking teams.</p>
+        </section>
 
-<footer>
-    <p>© 2025 Rômulo Pereira • <a href="https://www.linkedin.com/in/romulopereira" target="_blank">LinkedIn Profile</a></p>
-</footer>
+        <section>
+            <h2>Experience</h2>
+
+            <div class="company">
+                <div class="company-head">
+                    <h3>BauWatch Group</h3>
+                    <span class="meta">Enschede, Netherlands</span>
+                </div>
+                <div class="position">
+                    <div class="position-head">
+                        <h4>Software Architect</h4>
+                        <span class="dates">Jan 2025 – Present</span>
+                    </div>
+                    <ul>
+                        <li>Lead the technical direction of the client-facing platform in the security domain.</li>
+                        <li>Design and build the backend services behind real-time customer interaction on the platform.</li>
+                        <li>Designed the licensing and access-control (ABAC) model that enables feature-based commercial sales.</li>
+                        <li>Work with product and UX on performance and usability, shape the evolution of the architecture, and mentor engineers.</li>
+                    </ul>
+                </div>
+                <div class="position">
+                    <div class="position-head">
+                        <h4>Senior Software Engineer</h4>
+                        <span class="dates">May 2024 – Dec 2024</span>
+                    </div>
+                    <p>Backend development and API design on the client platform, including identity and access management. Promoted to Software Architect after 8 months.</p>
+                </div>
+            </div>
+
+            <div class="company">
+                <div class="company-head">
+                    <h3>Serasa (Experian Brazil)</h3>
+                    <span class="meta">Remote</span>
+                </div>
+                <div class="position">
+                    <div class="position-head">
+                        <h4>Software Engineer Specialist</h4>
+                        <span class="dates">Oct 2021 – Apr 2024</span>
+                    </div>
+                    <ul>
+                        <li>Technical reference for integration and real-time data services on a financial platform with 200M+ users and millions of transactions per day.</li>
+                        <li>Introduced an event-driven integration architecture on Amazon SQS, which reduced RDS costs from $25k to $5k per month.</li>
+                        <li>Led resilience and scalability work on these services, and mentored engineers across several teams.</li>
+                    </ul>
+                </div>
+                <div class="position">
+                    <div class="position-head">
+                        <h4>Senior Software Engineer</h4>
+                        <span class="dates">Apr 2021 – Sep 2021</span>
+                    </div>
+                    <p>Backend development on integration and data services before moving into the Specialist role.</p>
+                </div>
+            </div>
+
+            <div class="company">
+                <div class="company-head">
+                    <h3>Faculdade Senac Criciúma</h3>
+                    <span class="meta">Criciúma, Brazil</span>
+                </div>
+                <div class="position">
+                    <div class="position-head">
+                        <h4>Instructor</h4>
+                        <span class="dates">Aug 2021 – Dec 2022</span>
+                    </div>
+                    <p>Taught Web Development and Software Architecture.</p>
+                </div>
+            </div>
+
+            <div class="company">
+                <div class="company-head">
+                    <h3>Betha Sistemas</h3>
+                    <span class="meta">Criciúma, Brazil</span>
+                </div>
+                <div class="position">
+                    <div class="position-head">
+                        <h4>Software Architect</h4>
+                        <span class="dates">Dec 2019 – Mar 2021</span>
+                    </div>
+                    <ul>
+                        <li>Led architecture decisions for a multi-tenant digital transformation SaaS used by hundreds of municipalities, with separate data and configuration per tenant.</li>
+                        <li>Defined service boundaries with Domain-Driven Design across municipal management modules.</li>
+                        <li>Mentored teams on agile practices and clean architecture.</li>
+                    </ul>
+                </div>
+                <div class="position">
+                    <div class="position-head">
+                        <h4>Full Stack Developer</h4>
+                        <span class="dates">May 2018 – Dec 2019</span>
+                    </div>
+                    <p>Built Java / Spring Boot microservices and Angular front ends. Used Amazon SQS for asynchronous processing and deployed with Docker, OpenShift and Jenkins.</p>
+                </div>
+                <div class="position">
+                    <div class="position-head">
+                        <h4>Software Test Engineer</h4>
+                        <span class="dates">Sep 2016 – May 2018</span>
+                    </div>
+                    <p>Tested Java services and web applications with JUnit and Mockito in Jenkins CI.</p>
+                </div>
+            </div>
+
+            <div class="company">
+                <div class="company-head">
+                    <h3>Cognitic.ie</h3>
+                    <span class="meta">Dublin, Ireland · Remote, part-time</span>
+                </div>
+                <div class="position">
+                    <div class="position-head">
+                        <h4>Software Architect</h4>
+                        <span class="dates">Jan 2018 – Jan 2020</span>
+                    </div>
+                    <p>Architecture and technical analysis for custom SaaS solutions in Node.js, TypeScript and MongoDB.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Earlier experience</h2>
+            <ul class="earlier">
+                <li>
+                    <strong>Co-founder &amp; Backend Developer · Lamp Soluções em Tecnologia</strong>
+                    <span class="dates">2014 – 2016</span>
+                    <span class="what">Co-founded a custom software company and led backend development for logistics, retail and service clients.</span>
+                </li>
+                <li>
+                    <strong>IT Analyst · Pultrusão do Brasil</strong>
+                    <span class="dates">2013 – 2015</span>
+                    <span class="what">Built a production planning and inventory management system for a chemical manufacturer.</span>
+                </li>
+                <li>
+                    <strong>Software Engineer · Large public bank, Brazil</strong>
+                    <span class="dates">2010 – 2013</span>
+                    <span class="what">Java and MySQL development on internal systems (name confidential under NDA).</span>
+                </li>
+                <li>
+                    <strong>Junior PHP Developer · AirTI Tecnologia</strong>
+                    <span class="dates">2009 – 2010</span>
+                    <span class="what">Developed small web applications in PHP and MySQL.</span>
+                </li>
+                <li>
+                    <strong>IT Intern · Prefeitura Municipal de Torres</strong>
+                    <span class="dates">2007 – 2009</span>
+                    <span class="what">Maintained the municipality's administrative systems in PHP and MySQL.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <div class="skill-grid">
+                <div>
+                    <h3>Backend</h3>
+                    <div class="chips"><span>Java</span><span>Spring Boot</span><span>Node.js</span><span>TypeScript</span><span>NestJS</span></div>
+                </div>
+                <div>
+                    <h3>Frontend</h3>
+                    <div class="chips"><span>Angular</span><span>Next.js</span></div>
+                </div>
+                <div>
+                    <h3>Architecture</h3>
+                    <div class="chips"><span>Software Architecture</span><span>Distributed Systems</span><span>Event-Driven Architecture</span><span>Microservices</span><span>Multi-tenant SaaS</span><span>DDD</span><span>Clean Architecture</span><span>REST APIs</span></div>
+                </div>
+                <div>
+                    <h3>Data</h3>
+                    <div class="chips"><span>PostgreSQL</span><span>MongoDB</span><span>Oracle</span><span>MySQL</span><span>Redis</span></div>
+                </div>
+                <div>
+                    <h3>Cloud &amp; Delivery</h3>
+                    <div class="chips"><span>AWS</span><span>Amazon SQS</span><span>Docker</span><span>Kubernetes</span><span>OpenShift</span><span>Jenkins</span><span>GitHub Actions</span><span>CI/CD</span></div>
+                </div>
+                <div>
+                    <h3>Practices</h3>
+                    <div class="chips"><span>TDD</span><span>BDD</span><span>Agile</span><span>Code Review</span><span>Mentoring</span></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<footer>© 2026 Rômulo Pereira</footer>
+
 </body>
 </html>
